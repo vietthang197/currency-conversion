@@ -9,7 +9,10 @@ import vn.neo.dto.CurrencyExchangeDto;
  * @author thanglv on 3/9/2022
  * @project currency-conversion
  */
-@FeignClient(name = "currency-exchange", url = "${currency-exchange.url}")
+/*Khi dùng OpenFeign với spring discovery server thì không cần phải chỉ ra url của service khác
+Nếu như mà không dùng chung với eureka discovery server thì phải chỉ ra url này
+ */
+@FeignClient(name = "currency-exchange-service"/*, url = "${currency-exchange.url}"*/)
 public interface CurrencyExchangeProxy {
 
     @GetMapping("/currency-exchange/from/{from}/to/{to}")
